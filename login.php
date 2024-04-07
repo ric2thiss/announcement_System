@@ -6,13 +6,14 @@
  
 //  Error handler variable
 $emailError = $passwordError = "";
+
  if(isset($_POST["submit"])){
     if(empty($_POST["email"])){
       $emailError = "Email is Wrong";
     }else if(empty($_POST["password"])){
       $passwordError = "Password is Wrong";
     }else{
-      // $dbConn = new Database();
+      
       $UserModel = new User();
       $auth = new AuthController($UserModel);
       $auth->login();
@@ -21,7 +22,7 @@ $emailError = $passwordError = "";
 
 
 // Check if the user is already logged in
- session_start();
+//  session_start();
 
 if(isset($_SESSION["email"])) {
     // Redirect to dashboard if the user is logged in
