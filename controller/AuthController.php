@@ -59,5 +59,25 @@
             session_destroy();
             header("Location: login.php");
         }
+
+        public function userInfo(){
+            // Check if the user is logged in
+            if(isset($_SESSION['email'])) {
+                // Retrieve the email from the session
+                $email = $_SESSION['email'];
+        
+                // Retrieve user information based on the email
+                $userInfo = $this->userModel->getter($email);
+        
+                // Return user information if found
+                return $userInfo;
+            } else {
+                // Redirect or handle the case where the user is not logged in
+                // For example:
+                header('Location: ./login.php');
+                exit(); // Always exit after redirection
+            }
+        }
+        
     }
 ?>

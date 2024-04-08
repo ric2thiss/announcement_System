@@ -22,7 +22,7 @@ $emailError = $passwordError = "";
 
 
 // Check if the user is already logged in
-//  session_start();
+ session_start();
 
 if(isset($_SESSION["email"])) {
     // Redirect to dashboard if the user is logged in

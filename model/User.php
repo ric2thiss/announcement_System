@@ -76,6 +76,21 @@ class User {
         }
     }
 
+    public function getter($email){
+        try {
+            $sql = "SELECT * FROM users WHERE email = :email";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":email", $email);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $user;
+        } catch(PDOException $err) {
+            // Handle the error gracefully
+            return null;
+        }
+    }
+    
+
     
     
 }
